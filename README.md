@@ -13,7 +13,7 @@ Modelo no Banco de dados
 
 Tecnologias usadas no projeto:
 
-Java
+Java = Java Version 21
 Spring Boot
 JPA/Hibernate
 Maven
@@ -69,6 +69,7 @@ spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 spring.jpa.hibernate.ddl-auto=none
 system.properties
 java.runtime.version=21
+
 WebConfig
 @Configuration
 public class WebConfig {
@@ -87,6 +88,7 @@ public class WebConfig {
 	}
 	
 }
+
 GameRepository
 @Query(nativeQuery = true, value = """
 		SELECT tb_game.id, tb_game.title, tb_game.game_year AS `year`, tb_game.img_url AS imgUrl,
@@ -97,6 +99,7 @@ GameRepository
 		ORDER BY tb_belonging.position
 			""")
 List<GameMinProjection> searchByList(Long listId);
+
 GameListRepository
 @Modifying
 @Query(nativeQuery = true, value = "UPDATE tb_belonging SET position = :newPosition WHERE list_id = :listId AND game_id = :gameId")
